@@ -1,6 +1,7 @@
 package com.example.goalcast.data
 
 import kotlinx.coroutines.flow.Flow
+import java.util.Calendar
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,5 +25,24 @@ class TodoRepository @Inject constructor(private val todoDao: TodoDao) {
 
     suspend fun deleteTodo(todo: Todo) {
         todoDao.delete(todo)
+    }
+
+    suspend fun getTodaysPendingTodosList(): List<Todo> {
+        val calendar = Calendar.getInstance()
+        val startOfDay = calendar.apply {
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }.timeInMillis
+
+        val endOfDay = calendar.apply {
+            set(Calendar.HOUR_OF_DAY, 23)
+            set(Calendar.MINUTE, 59)
+            set(Calendar.SECOND, 59)
+            set(Calendar.MILLISECOND, 999)
+        }.timeInMillis
+
+        return todoDao.getTodaysPendingTodosList(startOfDay, endOfDay)
     }
 }
