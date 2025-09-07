@@ -26,7 +26,7 @@ private val AppDarkColorScheme = darkColorScheme(
     onSecondary = Color.Black,
     onBackground = TextPrimaryDark,
     onSurface = TextPrimaryDark,
-    onError = Color.White
+    onError = Color.White,
 )
 
 @Composable
