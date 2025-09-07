@@ -851,22 +851,22 @@ fun EmptyState() {
         }
     }
 }
-
-@Preview(showBackground = true, backgroundColor = 0xFF121212)
-@Composable
-fun MainScreenPreview() {
-    val sampleTodos = listOf(
-        Todo(id = 1, taskDescription = "Task 1", isCompleted = false, priority = 3, dueDate = System.currentTimeMillis(), createdAt = System.currentTimeMillis()),
-        Todo(id = 2, taskDescription = "Another taskkkk", isCompleted = false, priority = 2, dueDate = System.currentTimeMillis(), createdAt = System.currentTimeMillis()),
-        Todo(id = 3, taskDescription = "Another taskkkk", isCompleted = true, priority = 1, dueDate = System.currentTimeMillis(), createdAt = System.currentTimeMillis())
-    )
-    GoalCastTheme {
-        Surface(color = MaterialTheme.colorScheme.background) {
-            TodoList(
-                todos = sampleTodos,
-                onStatusChange = { _, _ -> },
-                onDelete = { }
-            )
-        }
-    }
-}
+//
+//@Preview(showBackground = true, backgroundColor = 0xFF121212)
+//@Composable
+//fun MainScreenPreview() {
+//    val sampleTodos = listOf(
+//        Todo(id = 1, taskDescription = "Task 1", isCompleted = false, priority = 3, dueDate = System.currentTimeMillis(), createdAt = System.currentTimeMillis()),
+//        Todo(id = 2, taskDescription = "Another taskkkk", isCompleted = false, priority = 2, dueDate = System.currentTimeMillis(), createdAt = System.currentTimeMillis()),
+//        Todo(id = 3, taskDescription = "Another taskkkk", isCompleted = true, priority = 1, dueDate = System.currentTimeMillis(), createdAt = System.currentTimeMillis())
+//    )
+//    GoalCastTheme {
+//        Surface(color = MaterialTheme.colorScheme.background) {
+//            TodoList(
+//                todos = sampleTodos,
+//                onStatusChange = { _, _ -> },
+//                onDelete = { }
+//            )
+//        }
+//    }
+//}

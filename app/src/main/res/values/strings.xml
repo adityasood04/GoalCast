@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GoalCast</string>
+    <string name="widget_description">See your daily goals at a glance.</string>
 </resources>

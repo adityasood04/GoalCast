@@ -77,11 +77,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     //icons
-    implementation("com.google.android.material:material:1.13.0")
+    implementation(libs.material)
+    implementation(libs.androidx.material.icons.core)
+    implementation(libs.androidx.material.icons.extended)
 
-    // Optional: If using Jetpack Compose Material Icons
-    implementation("androidx.compose.material:material-icons-core:1.7.8")
-    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+    //glance
+    implementation(libs.androidx.glance.appwidget)
 }
 kapt {
     correctErrorTypes = true
