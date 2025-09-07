@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.animation.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -60,8 +61,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.androidx.foundation)
+
     //room
-    val roomVersion = "2.6.1"
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
@@ -73,6 +75,13 @@ dependencies {
 
     // ViewModel for Compose
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    //icons
+    implementation("com.google.android.material:material:1.13.0")
+
+    // Optional: If using Jetpack Compose Material Icons
+    implementation("androidx.compose.material:material-icons-core:1.7.8")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 }
 kapt {
     correctErrorTypes = true
