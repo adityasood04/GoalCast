@@ -773,8 +773,8 @@ fun GreetingHeader() {
     val calendar = Calendar.getInstance()
     val greeting = when (calendar.get(Calendar.HOUR_OF_DAY)) {
         in 0..11 -> "Good Morning!"
-        in 12..16 -> "Good Afternoon, Aditya!"
-        else -> "Good Evening, Aditya!"
+        in 12..16 -> "Good Afternoon!"
+        else -> "Good Evening!"
     }
     val date = SimpleDateFormat("EEEE, MMMM d", Locale.getDefault()).format(Date())
 
