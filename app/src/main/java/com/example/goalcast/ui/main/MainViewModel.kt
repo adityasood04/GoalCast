@@ -1,10 +1,13 @@
 package com.example.goalcast.ui.main
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.goalcast.data.Todo
 import com.example.goalcast.data.TodoRepository
+import com.example.goalcast.widget.WidgetUpdateHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +18,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: TodoRepository
+    private val repository: TodoRepository,
+    private val widgetUpdateHelper: WidgetUpdateHelper,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     private val _todos = MutableStateFlow<List<Todo>>(emptyList())
@@ -58,6 +63,7 @@ class MainViewModel @Inject constructor(
                 priority = priority
             )
             repository.insertTodo(newTodo)
+            widgetUpdateHelper.updateWidgets(context)
         }
     }
 
@@ -65,12 +71,14 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             val updatedTodo = todo.copy(isCompleted = isCompleted)
             repository.updateTodo(updatedTodo)
+            widgetUpdateHelper.updateWidgets(context)
         }
     }
 
     fun deleteTodo(todo: Todo) {
         viewModelScope.launch {
             repository.deleteTodo(todo)
+            widgetUpdateHelper.updateWidgets(context)
         }
     }
 }

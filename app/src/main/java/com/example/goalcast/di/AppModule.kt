@@ -1,7 +1,6 @@
 package com.example.goalcast.di
 
 import android.content.Context
-import androidx.room.Room
 import com.example.goalcast.data.AppDatabase
 import com.example.goalcast.data.TodoDao
 import dagger.Module
@@ -14,16 +13,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(
-            context,
-            AppDatabase::class.java,
-            "goalcast_database"
-        )
-            .fallbackToDestructiveMigration()
-            .build()
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
+        return AppDatabase.getDatabase(context)
     }
 
     @Provides

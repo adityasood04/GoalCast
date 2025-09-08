@@ -1,5 +1,6 @@
 package com.example.goalcast.data
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -7,10 +8,20 @@ import androidx.room.PrimaryKey
 data class Todo(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val taskDescription: String,
+
+    @ColumnInfo(name = "taskDescription")
+    var taskDescription: String,
+
+    @ColumnInfo(name = "isCompleted")
     var isCompleted: Boolean = false,
-    val priority: Int = 2,
+
+    @ColumnInfo(name = "createdAt")
     val createdAt: Long = System.currentTimeMillis(),
-    val dueDate: Long
+
+    @ColumnInfo(name = "dueDate")
+    var dueDate: Long,
+
+    @ColumnInfo(name = "priority")
+    var priority: Int
 )
 

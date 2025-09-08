@@ -15,15 +15,19 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val openAddTodoSheet = intent.getBooleanExtra(OPEN_ADD_TODO_SHEET, false)
         setContent {
             GoalCastTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen()
+                    MainScreen(openAddTodoSheet = openAddTodoSheet)
                 }
             }
         }
+    }
+    companion object {
+        const val OPEN_ADD_TODO_SHEET = "open_add_todo_sheet"
     }
 }

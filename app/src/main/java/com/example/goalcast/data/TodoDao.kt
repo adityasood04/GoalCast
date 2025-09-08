@@ -23,9 +23,13 @@ interface TodoDao {
     @Query("SELECT * FROM todos_table WHERE dueDate >= :startOfDay AND dueDate < :endOfDay ORDER BY priority ASC, createdAt DESC")
     fun getTodosForDay(startOfDay: Long, endOfDay: Long): Flow<List<Todo>>
 
-    @Query("SELECT * FROM todos_table WHERE id = :id")
-    fun getTodoById(id: Int): Flow<Todo>
+    @Query("SELECT * FROM todos_table WHERE id = :todoId")
+    suspend fun getTodoById(todoId: Int): Todo?
 
-    @Query("SELECT * FROM todos_table WHERE isCompleted = 0 AND dueDate >= :startOfDay AND dueDate < :endOfDay ORDER BY priority DESC, createdAt ASC")
+    @Query("UPDATE todos_table SET isCompleted = 1 WHERE id = :todoId")
+    suspend fun markTodoAsDone(todoId: Int)
+
+    @Query("SELECT * FROM todos_table WHERE dueDate >= :startOfDay AND dueDate < :endOfDay")
     suspend fun getTodaysPendingTodosList(startOfDay: Long, endOfDay: Long): List<Todo>
+
 }
