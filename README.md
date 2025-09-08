@@ -105,4 +105,4 @@ Contributions are welcome!
 If you have ideas for new features or find a bug, feel free to open an issue or submit a pull request.
 
 ## License
-This project is licensed under the [GPL License](https://github.com/adityasood04/Soul-Script/blob/main/LICENSE) – see the LICENSE.md file for details.
+This project is licensed under the [GPL License](https://github.com/adityasood04/GoalCast/blob/main/LICENSE) – see the LICENSE.md file for details.
