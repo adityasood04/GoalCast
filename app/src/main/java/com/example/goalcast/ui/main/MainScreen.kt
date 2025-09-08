@@ -108,6 +108,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -116,6 +117,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.goalcast.R
 import com.example.goalcast.data.Todo
 import com.example.goalcast.ui.theme.GoalCastTheme
 import kotlinx.coroutines.launch
@@ -821,20 +823,20 @@ fun AppDrawerContent() {
                                 Brush.radialGradient(
                                     colors = listOf(
                                         MaterialTheme.colorScheme.primary,
-                                        MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+                                        MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
                                     )
                                 )
                             )
-                            .padding(16.dp),
+                            .padding(8.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Filled.RocketLaunch,
+                            painter = painterResource(id = R.drawable.ic_launcher_foreground),
                             contentDescription = "App Icon",
-                            modifier = Modifier.size(40.dp),
-                            tint = MaterialTheme.colorScheme.onError
+                            modifier = Modifier.size(64.dp),
                         )
                     }
+
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         "Goal Cast",
