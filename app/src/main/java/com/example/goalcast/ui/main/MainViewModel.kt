@@ -13,7 +13,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -80,5 +83,21 @@ class MainViewModel @Inject constructor(
             repository.deleteTodo(todo)
             widgetUpdateHelper.updateWidgets(context)
         }
+    }
+
+    fun generateShareSummary(): String {
+        val completedTasks = todos.value.filter { it.isCompleted }
+        if (completedTasks.isEmpty()) {
+            return "No tasks completed today, but will come back tomorrow with new energy! #Goalcast"
+        }
+
+        val date = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault()).format(Date())
+
+        val summary = StringBuilder("Log for $date: 📜\n\n")
+        completedTasks.forEach {
+            summary.append("- ${it.taskDescription}\n")
+        }
+        summary.append("\n#BuildInPublic #Goalcast")
+        return summary.toString()
     }
 }
